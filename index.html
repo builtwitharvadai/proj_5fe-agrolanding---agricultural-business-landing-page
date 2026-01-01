@@ -122,7 +122,7 @@
             aria-controls="nav-menu"
             aria-label="Toggle navigation menu"
           >
-            <span class="hamburger"></span>
+            <span class="hamburger" aria-hidden="true"></span>
           </button>
 
           <div class="nav-menu" id="nav-menu" data-visible="false">
@@ -157,10 +157,10 @@
               </a>
             </div>
           </div>
-          <div class="hero-image" aria-hidden="true">
+          <div class="hero-image" role="img" aria-label="Modern agricultural farm with lush green fields and advanced farming equipment under clear blue sky">
             <img
               src="/images/hero-farm.jpg"
-              alt="Modern agricultural farm with lush green fields and advanced farming equipment under clear blue sky"
+              alt=""
               loading="eager"
               fetchpriority="high"
               width="1200"
@@ -180,8 +180,8 @@
             </p>
           </header>
 
-          <div class="services-grid">
-            <article class="service-card">
+          <div class="services-grid" role="list">
+            <article class="service-card" role="listitem">
               <div class="service-icon" aria-hidden="true">
                 <img
                   src="/images/icons/crop-management.svg"
@@ -202,7 +202,7 @@
               </a>
             </article>
 
-            <article class="service-card">
+            <article class="service-card" role="listitem">
               <div class="service-icon" aria-hidden="true">
                 <img
                   src="/images/icons/soil-analysis.svg"
@@ -223,7 +223,7 @@
               </a>
             </article>
 
-            <article class="service-card">
+            <article class="service-card" role="listitem">
               <div class="service-icon" aria-hidden="true">
                 <img
                   src="/images/icons/irrigation.svg"
@@ -244,7 +244,7 @@
               </a>
             </article>
 
-            <article class="service-card">
+            <article class="service-card" role="listitem">
               <div class="service-icon" aria-hidden="true">
                 <img
                   src="/images/icons/consulting.svg"
@@ -265,7 +265,7 @@
               </a>
             </article>
 
-            <article class="service-card">
+            <article class="service-card" role="listitem">
               <div class="service-icon" aria-hidden="true">
                 <img
                   src="/images/icons/equipment.svg"
@@ -286,7 +286,7 @@
               </a>
             </article>
 
-            <article class="service-card">
+            <article class="service-card" role="listitem">
               <div class="service-icon" aria-hidden="true">
                 <img
                   src="/images/icons/sustainability.svg"
@@ -364,10 +364,10 @@
               </ul>
             </div>
 
-            <div class="about-image">
+            <div class="about-image" role="img" aria-label="GreenField Agricultural Solutions team of agricultural experts working in the field with farmers">
               <img
                 src="/images/about-team.jpg"
-                alt="GreenField Agricultural Solutions team of agricultural experts working in the field with farmers"
+                alt=""
                 loading="lazy"
                 width="600"
                 height="800"
@@ -375,20 +375,20 @@
             </div>
           </div>
 
-          <div class="stats-grid">
-            <div class="stat-item">
+          <div class="stats-grid" role="list">
+            <div class="stat-item" role="listitem">
               <p class="stat-number" aria-label="Over 500 farms served">500+</p>
               <p class="stat-label">Farms Served</p>
             </div>
-            <div class="stat-item">
+            <div class="stat-item" role="listitem">
               <p class="stat-number" aria-label="20 years of experience">20+</p>
               <p class="stat-label">Years Experience</p>
             </div>
-            <div class="stat-item">
+            <div class="stat-item" role="listitem">
               <p class="stat-number" aria-label="98 percent client satisfaction">98%</p>
               <p class="stat-label">Client Satisfaction</p>
             </div>
-            <div class="stat-item">
+            <div class="stat-item" role="listitem">
               <p class="stat-number" aria-label="Over 10,000 acres managed">10K+</p>
               <p class="stat-label">Acres Managed</p>
             </div>
@@ -443,8 +443,8 @@
                 <div class="contact-item">
                   <h4>Business Hours</h4>
                   <p>
-                    Monday - Friday: 8:00 AM - 6:00 PM<br />
-                    Saturday: 9:00 AM - 4:00 PM<br />
+                    <time datetime="Mo-Fr 08:00-18:00">Monday - Friday: 8:00 AM - 6:00 PM</time><br />
+                    <time datetime="Sa 09:00-16:00">Saturday: 9:00 AM - 4:00 PM</time><br />
                     Sunday: Closed
                   </p>
                 </div>
