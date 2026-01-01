@@ -29,6 +29,12 @@ import './styles/components.css';
  */
 import './styles/sections/hero.css';
 
+/**
+ * Import services section styles for responsive grid layout
+ * This includes service cards, icons, hover effects, and responsive behavior
+ */
+import './styles/sections/services.css';
+
 // ============================================
 // Component Imports - Module Loading
 // ============================================
@@ -38,6 +44,12 @@ import './styles/sections/hero.css';
  * This includes CTA button handling, smooth scrolling, and image optimization
  */
 import { initializeHeroSection } from './components/hero.js';
+
+/**
+ * Import services section functionality for interactive features
+ * This includes service card interactions, grid optimization, and accessibility
+ */
+import { initializeServicesSection } from './components/services.js';
 
 // ============================================
 // Application State
@@ -522,6 +534,9 @@ function initializeApp() {
 
     // Initialize hero section
     initializeHeroSection();
+
+    // Initialize services section
+    initializeServicesSection();
 
     // Mark as initialized
     appState.initialized = true;
