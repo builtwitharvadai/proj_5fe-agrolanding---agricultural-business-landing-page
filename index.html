@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>AgroLanding - Modern Agricultural Solutions | Farm Services</title>
+    <meta
+      name="description"
+      content="Leading agricultural business providing innovative farming solutions, crop management services, and sustainable agriculture practices for modern farmers."
+    />
+    <meta
+      name="keywords"
+      content="agriculture, farming, crop management, agricultural services, sustainable farming, agribusiness"
+    />
+    <meta name="author" content="AgroLanding Team" />
+
+    <meta property="og:title" content="AgroLanding - Modern Agricultural Solutions" />
+    <meta
+      property="og:description"
+      content="Leading agricultural business providing innovative farming solutions and sustainable agriculture practices."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://agrolanding.example.com" />
+    <meta
+      property="og:image"
+      content="https://agrolanding.example.com/images/og-image.jpg"
+    />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="AgroLanding - Modern Agricultural Solutions" />
+    <meta
+      name="twitter:description"
+      content="Leading agricultural business providing innovative farming solutions."
+    />
+
+    <link rel="canonical" href="https://agrolanding.example.com" />
+
+    <meta name="theme-color" content="#2d5016" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a2e0d" media="(prefers-color-scheme: dark)" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <style>
+      :root {
+        --color-primary: #2d5016;
+        --color-secondary: #6b8e23;
+        --color-accent: #8fbc8f;
+        --color-text: #333333;
+        --color-background: #ffffff;
+        --spacing-unit: 1rem;
+        --max-width: 1200px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+          'Helvetica Neue', Arial, sans-serif;
+        line-height: 1.6;
+        color: var(--color-text);
+        background-color: var(--color-background);
+      }
+
+      .skip-link {
+        position: absolute;
+        top: -40px;
+        left: 0;
+        background: var(--color-primary);
+        color: white;
+        padding: 8px;
+        text-decoration: none;
+        z-index: 100;
+      }
+
+      .skip-link:focus {
+        top: 0;
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+      }
+
+      .container {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 var(--spacing-unit);
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <header role="banner">
+      <div class="container">
+        <nav role="navigation" aria-label="Main navigation">
+          <div class="nav-brand">
+            <a href="/" aria-label="AgroLanding Home">
+              <span class="logo-text">AgroLanding</span>
+            </a>
+          </div>
+          <ul role="list">
+            <li><a href="#home" aria-current="page">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" role="main">
+      <section id="home" aria-labelledby="hero-title">
+        <div class="container">
+          <div class="hero-content">
+            <h1 id="hero-title">Modern Agricultural Solutions for Tomorrow's Farms</h1>
+            <p class="hero-subtitle">
+              Empowering farmers with innovative technology, sustainable practices, and
+              expert guidance to maximize crop yields and profitability.
+            </p>
+            <div class="hero-actions">
+              <a href="#services" class="btn btn-primary" aria-label="Explore our services">
+                Explore Services
+              </a>
+              <a href="#contact" class="btn btn-secondary" aria-label="Get in touch with us">
+                Get Started
+              </a>
+            </div>
+          </div>
+          <div class="hero-image" aria-hidden="true">
+            <img
+              src="/images/hero-farm.jpg"
+              alt="Modern agricultural farm with green fields and advanced farming equipment"
+              loading="eager"
+              width="1200"
+              height="800"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section id="services" aria-labelledby="services-title">
+        <div class="container">
+          <header class="section-header">
+            <h2 id="services-title">Our Agricultural Services</h2>
+            <p class="section-description">
+              Comprehensive solutions designed to support every aspect of modern farming
+              operations.
+            </p>
+          </header>
+
+          <div class="services-grid">
+            <article class="service-card">
+              <div class="service-icon" aria-hidden="true">
+                <img
+                  src="/images/icons/crop-management.svg"
+                  alt=""
+                  width="64"
+                  height="64"
+                  loading="lazy"
+                />
+              </div>
+              <h3>Crop Management</h3>
+              <p>
+                Advanced crop monitoring and management systems using precision agriculture
+                technology to optimize growth and yield.
+              </p>
+              <a href="#contact" class="service-link" aria-label="Learn more about crop management services">
+                Learn More
+                <span aria-hidden="true">→</span>
+              </a>
+            </article>
+
+            <article class="service-card">
+              <div class="service-icon" aria-hidden="true">
+                <img
+                  src="/images/icons/soil-analysis.svg"
+                  alt=""
+                  width="64"
+                  height="64"
+                  loading="lazy"
+                />
+              </div>
+              <h3>Soil Analysis</h3>
+              <p>
+                Comprehensive soil testing and analysis services to determine optimal
+                fertilization and crop selection strategies.
+              </p>
+              <a href="#contact" class="service-link" aria-label="Learn more about soil analysis services">
+                Learn More
+                <span aria-hidden="true">→</span>
+              </a>
+            </article>
+
+            <article class="service-card">
+              <div class="service-icon" aria-hidden="true">
+                <img
+                  src="/images/icons/irrigation.svg"
+                  alt=""
+                  width="64"
+                  height="64"
+                  loading="lazy"
+                />
+              </div>
+              <h3>Irrigation Solutions</h3>
+              <p>
+                Smart irrigation systems and water management solutions to conserve
+                resources while maximizing crop health.
+              </p>
+              <a href="#contact" class="service-link" aria-label="Learn more about irrigation solutions">
+                Learn More
+                <span aria-hidden="true">→</span>
+              </a>
+            </article>
+
+            <article class="service-card">
+              <div class="service-icon" aria-hidden="true">
+                <img
+                  src="/images/icons/consulting.svg"
+                  alt=""
+                  width="64"
+                  height="64"
+                  loading="lazy"
+                />
+              </div>
+              <h3>Agricultural Consulting</h3>
+              <p>
+                Expert guidance on farm operations, crop selection, sustainability
+                practices, and business optimization.
+              </p>
+              <a href="#contact" class="service-link" aria-label="Learn more about agricultural consulting">
+                Learn More
+                <span aria-hidden="true">→</span>
+              </a>
+            </article>
+
+            <article class="service-card">
+              <div class="service-icon" aria-hidden="true">
+                <img
+                  src="/images/icons/equipment.svg"
+                  alt=""
+                  width="64"
+                  height="64"
+                  loading="lazy"
+                />
+              </div>
+              <h3>Equipment & Technology</h3>
+              <p>
+                Access to modern farming equipment and agricultural technology solutions
+                for efficient farm operations.
+              </p>
+              <a href="#contact" class="service-link" aria-label="Learn more about equipment and technology">
+                Learn More
+                <span aria-hidden="true">→</span>
+              </a>
+            </article>
+
+            <article class="service-card">
+              <div class="service-icon" aria-hidden="true">
+                <img
+                  src="/images/icons/sustainability.svg"
+                  alt=""
+                  width="64"
+                  height="64"
+                  loading="lazy"
+                />
+              </div>
+              <h3>Sustainable Practices</h3>
+              <p>
+                Implementation of eco-friendly farming methods and sustainable agriculture
+                practices for long-term success.
+              </p>
+              <a href="#contact" class="service-link" aria-label="Learn more about sustainable practices">
+                Learn More
+                <span aria-hidden="true">→</span>
+              </a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" aria-labelledby="about-title">
+        <div class="container">
+          <div class="about-content">
+            <div class="about-text">
+              <header>
+                <h2 id="about-title">About AgroLanding</h2>
+              </header>
+              <p>
+                With over two decades of experience in agricultural innovation, AgroLanding
+                has been at the forefront of transforming traditional farming into modern,
+                sustainable, and profitable operations.
+              </p>
+              <p>
+                Our team of agricultural experts, agronomists, and technology specialists
+                work together to provide comprehensive solutions that address the unique
+                challenges faced by today's farmers.
+              </p>
+
+              <h3>Our Mission</h3>
+              <p>
+                To empower farmers with cutting-edge technology and sustainable practices
+                that increase productivity while preserving our environment for future
+                generations.
+              </p>
+
+              <h3>Why Choose Us</h3>
+              <ul role="list">
+                <li>
+                  <strong>20+ Years of Experience:</strong> Proven track record in
+                  agricultural innovation and farm management.
+                </li>
+                <li>
+                  <strong>Expert Team:</strong> Certified agronomists and agricultural
+                  specialists dedicated to your success.
+                </li>
+                <li>
+                  <strong>Sustainable Approach:</strong> Environmentally responsible
+                  solutions that protect natural resources.
+                </li>
+                <li>
+                  <strong>Technology-Driven:</strong> Latest agricultural technology and
+                  precision farming tools.
+                </li>
+                <li>
+                  <strong>Personalized Service:</strong> Customized solutions tailored to
+                  your specific farming needs.
+                </li>
+                <li>
+                  <strong>Ongoing Support:</strong> Continuous guidance and support
+                  throughout the growing season.
+                </li>
+              </ul>
+            </div>
+
+            <div class="about-image">
+              <img
+                src="/images/about-team.jpg"
+                alt="AgroLanding team of agricultural experts working in the field with farmers"
+                loading="lazy"
+                width="600"
+                height="800"
+              />
+            </div>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-item">
+              <p class="stat-number" aria-label="Over 500 farms served">500+</p>
+              <p class="stat-label">Farms Served</p>
+            </div>
+            <div class="stat-item">
+              <p class="stat-number" aria-label="20 years of experience">20+</p>
+              <p class="stat-label">Years Experience</p>
+            </div>
+            <div class="stat-item">
+              <p class="stat-number" aria-label="98 percent client satisfaction">98%</p>
+              <p class="stat-label">Client Satisfaction</p>
+            </div>
+            <div class="stat-item">
+              <p class="stat-number" aria-label="Over 10,000 acres managed">10K+</p>
+              <p class="stat-label">Acres Managed</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" aria-labelledby="contact-title">
+        <div class="container">
+          <header class="section-header">
+            <h2 id="contact-title">Get In Touch</h2>
+            <p class="section-description">
+              Ready to transform your farming operations? Contact us today for a
+              consultation.
+            </p>
+          </header>
+
+          <div class="contact-wrapper">
+            <div class="contact-info">
+              <h3>Contact Information</h3>
+              <address>
+                <div class="contact-item">
+                  <h4>Office Location</h4>
+                  <p>
+                    123 Agricultural Way<br />
+                    Farmville, AG 12345<br />
+                    United States
+                  </p>
+                </div>
+
+                <div class="contact-item">
+                  <h4>Phone</h4>
+                  <p>
+                    <a href="tel:+15551234567" aria-label="Call us at +1 555 123 4567">
+                      +1 (555) 123-4567
+                    </a>
+                  </p>
+                </div>
+
+                <div class="contact-item">
+                  <h4>Email</h4>
+                  <p>
+                    <a
+                      href="mailto:info@agrolanding.com"
+                      aria-label="Email us at info@agrolanding.com"
+                    >
+                      info@agrolanding.com
+                    </a>
+                  </p>
+                </div>
+
+                <div class="contact-item">
+                  <h4>Business Hours</h4>
+                  <p>
+                    Monday - Friday: 8:00 AM - 6:00 PM<br />
+                    Saturday: 9:00 AM - 4:00 PM<br />
+                    Sunday: Closed
+                  </p>
+                </div>
+              </address>
+            </div>
+
+            <div class="contact-form-wrapper">
+              <form
+                id="contact-form"
+                method="POST"
+                action="/api/contact"
+                novalidate
+                aria-labelledby="contact-title"
+              >
+                <fieldset>
+                  <legend class="sr-only">Contact Form</legend>
+
+                  <div class="form-group">
+                    <label for="name">
+                      Full Name
+                      <span aria-label="required" class="required">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      required
+                      aria-required="true"
+                      aria-invalid="false"
+                      aria-describedby="name-error"
+                      autocomplete="name"
+                      placeholder="John Doe"
+                    />
+                    <span id="name-error" class="error" role="alert" aria-live="polite"></span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="email">
+                      Email Address
+                      <span aria-label="required" class="required">*</span>
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      required
+                      aria-required="true"
+                      aria-invalid="false"
+                      aria-describedby="email-error"
+                      autocomplete="email"
+                      inputmode="email"
+                      placeholder="john@example.com"
+                    />
+                    <span id="email-error" class="error" role="alert" aria-live="polite"></span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      aria-describedby="phone-hint"
+                      autocomplete="tel"
+                      inputmode="tel"
+                      placeholder="+1 (555) 123-4567"
+                    />
+                    <span id="phone-hint" class="hint">Optional - for faster response</span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="service">
+                      Service Interest
+                      <span aria-label="required" class="required">*</span>
+                    </label>
+                    <select
+                      id="service"
+                      name="service"
+                      required
+                      aria-required="true"
+                      aria-invalid="false"
+                      aria-describedby="service-error"
+                    >
+                      <option value="">Select a service</option>
+                      <option value="crop-management">Crop Management</option>
+                      <option value="soil-analysis">Soil Analysis</option>
+                      <option value="irrigation">Irrigation Solutions</option>
+                      <option value="consulting">Agricultural Consulting</option>
+                      <option value="equipment">Equipment & Technology</option>
+                      <option value="sustainability">Sustainable Practices</option>
+                      <option value="other">Other</option>
+                    </select>
+                    <span id="service-error" class="error" role="alert" aria-live="polite"></span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="message">
+                      Message
+                      <span aria-label="required" class="required">*</span>
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows="5"
+                      required
+                      aria-required="true"
+                      aria-invalid="false"
+                      aria-describedby="message-error message-hint"
+                      placeholder="Tell us about your farming needs..."
+                    ></textarea>
+                    <span id="message-hint" class="hint">Minimum 10 characters</span>
+                    <span id="message-error" class="error" role="alert" aria-live="polite"></span>
+                  </div>
+
+                  <div class="form-group checkbox-group">
+                    <input
+                      type="checkbox"
+                      id="consent"
+                      name="consent"
+                      required
+                      aria-required="true"
+                      aria-describedby="consent-description"
+                    />
+                    <label for="consent">
+                      I agree to the
+                      <a href="/privacy" target="_blank" rel="noopener">privacy policy</a>
+                      and consent to be contacted
+                      <span aria-label="required" class="required">*</span>
+                    </label>
+                    <span id="consent-description" class="sr-only">
+                      Opens privacy policy in a new window
+                    </span>
+                  </div>
+
+                  <button
+                    type="submit"
+                    class="btn btn-primary btn-submit"
+                    aria-busy="false"
+                    aria-live="polite"
+                  >
+                    <span class="button-text">Send Message</span>
+                    <span class="button-spinner" aria-hidden="true"></span>
+                  </button>
+                </fieldset>
+              </form>
+
+              <div
+                id="form-status"
+                role="status"
+                aria-live="polite"
+                aria-atomic="true"
+                class="sr-only"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer role="contentinfo">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>AgroLanding</h3>
+            <p>
+              Modern agricultural solutions for sustainable farming and increased
+              productivity.
+            </p>
+          </div>
+
+          <div class="footer-section">
+            <h4>Quick Links</h4>
+            <nav aria-label="Footer navigation">
+              <ul role="list">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+            </nav>
+          </div>
+
+          <div class="footer-section">
+            <h4>Services</h4>
+            <ul role="list">
+              <li><a href="#services">Crop Management</a></li>
+              <li><a href="#services">Soil Analysis</a></li>
+              <li><a href="#services">Irrigation Solutions</a></li>
+              <li><a href="#services">Consulting</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h4>Legal</h4>
+            <ul role="list">
+              <li><a href="/privacy">Privacy Policy</a></li>
+              <li><a href="/terms">Terms of Service</a></li>
+              <li><a href="/cookies">Cookie Policy</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; <time datetime="2024">2024</time> AgroLanding. All rights reserved.
+          </p>
+          <p>
+            Built with
+            <span aria-label="love" role="img">❤️</span>
+            for farmers
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
