@@ -1,0 +1,610 @@
+/* ============================================
+   AgroLanding - Accessibility Stylesheet
+   Production-ready WCAG AA compliant CSS
+   ============================================ */
+
+/* ============================================
+   Focus Indicators - Keyboard Navigation
+   ============================================ */
+
+/* Enhanced focus visible styles for all interactive elements */
+:focus-visible {
+  outline: 3px solid var(--color-primary-600);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+  transition: outline-offset var(--transition-fast);
+}
+
+/* High contrast focus indicator */
+@media (prefers-contrast: high) {
+  :focus-visible {
+    outline-width: 4px;
+    outline-color: currentColor;
+    outline-offset: 4px;
+  }
+}
+
+/* Specific focus styles for different element types */
+a:focus-visible,
+button:focus-visible {
+  outline-color: var(--color-primary-600);
+  outline-style: solid;
+  outline-width: 3px;
+}
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--color-primary-600);
+  outline-offset: 2px;
+  border-color: var(--color-primary-600);
+  box-shadow: 0 0 0 4px rgba(95, 145, 22, 0.15);
+}
+
+/* Focus within for container elements */
+.service-card:focus-within,
+.contact-item:focus-within,
+.form-group:focus-within {
+  outline: 2px solid var(--color-primary-400);
+  outline-offset: 4px;
+  border-radius: var(--radius-lg);
+}
+
+/* Remove focus outline for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ============================================
+   Skip Links - Keyboard Navigation
+   ============================================ */
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  z-index: var(--z-index-tooltip);
+  padding: var(--space-md) var(--space-lg);
+  background-color: var(--color-primary-600);
+  color: white;
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  border-radius: 0 0 var(--radius-md) 0;
+  box-shadow: var(--shadow-xl);
+  transition: top var(--transition-base);
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid var(--color-primary-900);
+  outline-offset: 2px;
+}
+
+.skip-link:hover {
+  background-color: var(--color-primary-700);
+}
+
+/* ============================================
+   Screen Reader Only Content
+   ============================================ */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Allow screen reader only content to be focusable */
+.sr-only-focusable:focus,
+.sr-only-focusable:active {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* ============================================
+   High Contrast Mode Support
+   ============================================ */
+
+@media (prefers-contrast: high) {
+  /* Increase border visibility */
+  .service-card,
+  .contact-form-wrapper,
+  input,
+  select,
+  textarea,
+  button {
+    border-width: 2px;
+    border-color: currentColor;
+  }
+
+  /* Ensure text has sufficient contrast */
+  body {
+    color: var(--color-gray-900);
+    background-color: var(--color-background);
+  }
+
+  /* Underline all links */
+  a {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+  }
+
+  /* Increase button contrast */
+  .btn-primary {
+    background-color: var(--color-primary-700);
+    border: 2px solid var(--color-primary-900);
+  }
+
+  .btn-secondary {
+    border-width: 3px;
+    border-color: var(--color-primary-700);
+  }
+
+  /* Enhance focus indicators */
+  :focus-visible {
+    outline-width: 4px;
+    outline-style: solid;
+    outline-color: var(--color-gray-900);
+  }
+
+  /* Increase icon visibility */
+  .service-icon {
+    border: 2px solid currentColor;
+  }
+}
+
+/* ============================================
+   Reduced Motion Support
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Disable transform animations */
+  .service-card:hover,
+  .btn-primary:hover,
+  .service-link:hover {
+    transform: none !important;
+  }
+
+  /* Disable loading animations */
+  img[data-src] {
+    animation: none !important;
+  }
+
+  /* Disable button spinner animation */
+  .button-spinner {
+    animation: none !important;
+  }
+}
+
+/* ============================================
+   Keyboard Navigation Visual Feedback
+   ============================================ */
+
+/* Navigation menu keyboard focus */
+nav a:focus-visible {
+  background-color: var(--color-primary-100);
+  color: var(--color-primary-900);
+  outline: 3px solid var(--color-primary-600);
+  outline-offset: -3px;
+}
+
+/* Service card keyboard focus */
+.service-card:focus-within {
+  border-color: var(--color-primary-600);
+  box-shadow: 0 0 0 4px rgba(95, 145, 22, 0.2), var(--shadow-xl);
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-card:focus-within {
+    transform: none;
+  }
+}
+
+/* Form element keyboard focus */
+.form-group:focus-within label {
+  color: var(--color-primary-700);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Button keyboard focus */
+.btn:focus-visible {
+  box-shadow: 0 0 0 4px rgba(95, 145, 22, 0.3);
+  outline: 3px solid var(--color-primary-600);
+  outline-offset: 2px;
+}
+
+/* Link keyboard focus in content */
+.about-text a:focus-visible,
+.contact-item a:focus-visible,
+.footer-section a:focus-visible {
+  background-color: var(--color-primary-50);
+  padding: 2px 4px;
+  border-radius: var(--radius-sm);
+}
+
+/* ============================================
+   Touch Target Size - Mobile Accessibility
+   ============================================ */
+
+/* Ensure minimum touch target size of 44x44px */
+a,
+button,
+input[type='checkbox'],
+input[type='radio'],
+select {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Increase touch targets on mobile */
+@media (max-width: 767px) {
+  nav a,
+  .btn,
+  .service-link {
+    min-height: 48px;
+    padding: var(--space-md) var(--space-lg);
+  }
+
+  input,
+  select,
+  textarea {
+    min-height: 48px;
+    font-size: 16px; /* Prevent zoom on iOS */
+  }
+}
+
+/* ============================================
+   Color Contrast Enhancements
+   ============================================ */
+
+/* Ensure sufficient contrast for text */
+.hero-subtitle {
+  color: var(--color-gray-700);
+}
+
+.section-description {
+  color: var(--color-gray-700);
+}
+
+.service-card p {
+  color: var(--color-gray-700);
+}
+
+/* Enhanced contrast for links */
+a {
+  color: var(--color-primary-700);
+}
+
+a:hover {
+  color: var(--color-primary-800);
+}
+
+/* Form labels with sufficient contrast */
+label {
+  color: var(--color-gray-900);
+}
+
+.hint {
+  color: var(--color-gray-700);
+}
+
+/* Error messages with high contrast */
+.error {
+  color: var(--color-error);
+  font-weight: var(--font-weight-semibold);
+}
+
+input[aria-invalid='true'],
+select[aria-invalid='true'],
+textarea[aria-invalid='true'] {
+  border-color: var(--color-error);
+  border-width: 2px;
+}
+
+/* ============================================
+   ARIA Live Regions
+   ============================================ */
+
+[role='status'],
+[role='alert'],
+[aria-live] {
+  position: relative;
+}
+
+/* Visual indicator for live regions in development */
+[aria-live='polite']::before,
+[aria-live='assertive']::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background-color: var(--color-info);
+  opacity: 0;
+}
+
+[aria-live='assertive']::before {
+  background-color: var(--color-warning);
+}
+
+/* ============================================
+   Form Accessibility Enhancements
+   ============================================ */
+
+/* Required field indicator */
+.required {
+  color: var(--color-error);
+  font-weight: var(--font-weight-bold);
+}
+
+/* Form validation states */
+input:valid,
+select:valid,
+textarea:valid {
+  border-color: var(--color-success);
+}
+
+input:invalid:not(:placeholder-shown),
+select:invalid:not(:placeholder-shown),
+textarea:invalid:not(:placeholder-shown) {
+  border-color: var(--color-error);
+}
+
+/* Disabled state with clear visual indication */
+input:disabled,
+select:disabled,
+textarea:disabled,
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: var(--color-gray-100);
+  color: var(--color-gray-600);
+}
+
+/* Checkbox and radio button accessibility */
+input[type='checkbox'],
+input[type='radio'] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--color-primary-600);
+}
+
+input[type='checkbox']:focus-visible,
+input[type='radio']:focus-visible {
+  outline: 3px solid var(--color-primary-600);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   Loading States - Accessibility
+   ============================================ */
+
+/* Loading indicator with ARIA support */
+[aria-busy='true'] {
+  position: relative;
+  pointer-events: none;
+}
+
+[aria-busy='true']::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: inherit;
+}
+
+/* ============================================
+   Dark Mode Accessibility
+   ============================================ */
+
+@media (prefers-color-scheme: dark) {
+  /* Ensure focus indicators are visible in dark mode */
+  :focus-visible {
+    outline-color: var(--color-primary-400);
+  }
+
+  /* Adjust text contrast for dark mode */
+  .hero-subtitle,
+  .section-description,
+  .service-card p {
+    color: var(--color-gray-300);
+  }
+
+  /* Skip link in dark mode */
+  .skip-link {
+    background-color: var(--color-primary-500);
+  }
+
+  /* Form elements in dark mode */
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    box-shadow: 0 0 0 4px rgba(95, 145, 22, 0.3);
+  }
+}
+
+/* ============================================
+   Print Accessibility
+   ============================================ */
+
+@media print {
+  /* Ensure focus indicators don't print */
+  :focus-visible {
+    outline: none;
+  }
+
+  /* Show skip link targets in print */
+  .skip-link {
+    display: none;
+  }
+
+  /* Ensure sufficient contrast in print */
+  * {
+    color: black !important;
+    background: white !important;
+  }
+
+  /* Print link URLs for accessibility */
+  a[href^='http']::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.8em;
+    color: var(--color-gray-700);
+  }
+
+  /* Hide decorative elements */
+  .service-icon,
+  .hero-image {
+    opacity: 0.8;
+  }
+}
+
+/* ============================================
+   Forced Colors Mode (Windows High Contrast)
+   ============================================ */
+
+@media (forced-colors: active) {
+  /* Ensure borders are visible */
+  .service-card,
+  .contact-form-wrapper,
+  input,
+  select,
+  textarea,
+  button {
+    border: 2px solid currentColor;
+  }
+
+  /* Ensure focus indicators are visible */
+  :focus-visible {
+    outline: 3px solid currentColor;
+    outline-offset: 3px;
+  }
+
+  /* Ensure icons are visible */
+  .service-icon {
+    border: 2px solid currentColor;
+  }
+
+  /* Ensure buttons are distinguishable */
+  .btn-primary,
+  .btn-secondary {
+    border: 2px solid currentColor;
+  }
+}
+
+/* ============================================
+   Responsive Text Sizing
+   ============================================ */
+
+/* Ensure text can be resized up to 200% */
+@media (min-width: 1px) {
+  html {
+    font-size: 100%;
+  }
+
+  @supports (font-size: clamp(1rem, 1vw, 1.5rem)) {
+    html {
+      font-size: clamp(14px, 1vw, 18px);
+    }
+  }
+}
+
+/* ============================================
+   Orientation and Viewport Accessibility
+   ============================================ */
+
+/* Ensure content is accessible in both orientations */
+@media (orientation: landscape) and (max-height: 500px) {
+  /* Reduce vertical spacing for landscape mobile */
+  #home,
+  #services,
+  #about,
+  #contact {
+    padding-block: var(--space-xl);
+  }
+}
+
+/* ============================================
+   Content Visibility for Performance
+   ============================================ */
+
+/* Improve performance while maintaining accessibility */
+.service-card,
+.stat-item,
+.contact-item {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 300px;
+}
+
+/* Ensure content is always accessible to screen readers */
+[aria-hidden='true'] {
+  display: none;
+}
+
+/* ============================================
+   Semantic HTML Enhancement
+   ============================================ */
+
+/* Enhance semantic regions */
+main {
+  display: block;
+  isolation: isolate;
+}
+
+article,
+section,
+aside,
+nav,
+header,
+footer {
+  display: block;
+}
+
+/* ============================================
+   Animation Safety
+   ============================================ */
+
+/* Ensure animations don't interfere with accessibility */
+@keyframes safe-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-in {
+  animation: safe-fade-in var(--transition-base);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-in {
+    animation: none;
+  }
+}

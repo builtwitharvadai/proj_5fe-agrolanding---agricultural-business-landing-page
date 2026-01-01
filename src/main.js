@@ -53,6 +53,12 @@ import './styles/sections/about.css';
  */
 import './styles/sections/contact.css';
 
+/**
+ * Import accessibility styles for WCAG AA compliance
+ * This includes focus indicators, skip links, screen reader support, and high contrast mode
+ */
+import './styles/accessibility.css';
+
 // ============================================
 // Component Imports - Module Loading
 // ============================================
@@ -104,6 +110,21 @@ import { initLazyLoading } from './utils/lazy-loading.js';
 import { initPerformanceMonitoring } from './utils/performance.js';
 
 // ============================================
+// Accessibility Imports
+// ============================================
+
+/**
+ * Import accessibility utilities for WCAG AA compliance
+ * This includes focus management, keyboard navigation, ARIA helpers, and screen reader support
+ */
+import {
+  initializeSkipLinks,
+  announce,
+  createFocusTrap,
+  setAriaAttributes,
+} from './utils/accessibility.js';
+
+// ============================================
 // Application State
 // ============================================
 
@@ -117,6 +138,7 @@ const appState = {
   navigationOpen: false,
   performanceMonitoring: null,
   lazyLoading: null,
+  focusTrap: null,
 };
 
 // ============================================
@@ -287,11 +309,15 @@ function showFieldError(field, error) {
   const errorElement = safeQuerySelector(`#${errorId}`);
 
   field.setAttribute('aria-invalid', 'true');
+  field.setAttribute('aria-describedby', errorId);
   
   if (errorElement) {
     errorElement.textContent = error;
     errorElement.style.display = 'block';
   }
+
+  // Announce error to screen readers
+  announce(`Error: ${error}`, { politeness: 'assertive' });
 }
 
 /**
@@ -305,6 +331,7 @@ function clearFieldError(field) {
   const errorElement = safeQuerySelector(`#${errorId}`);
 
   field.setAttribute('aria-invalid', 'false');
+  field.removeAttribute('aria-describedby');
   
   if (errorElement) {
     errorElement.textContent = '';
@@ -396,7 +423,12 @@ function showFormStatus(message, type = 'info') {
   statusElement.textContent = message;
   statusElement.className = `alert alert-${type}`;
   statusElement.style.display = 'block';
-  statusElement.setAttribute('role', 'alert');
+  statusElement.setAttribute('role', type === 'error' ? 'alert' : 'status');
+
+  // Announce to screen readers
+  announce(message, { 
+    politeness: type === 'error' ? 'assertive' : 'polite' 
+  });
 
   // Auto-hide success messages after 5 seconds
   if (type === 'success') {
@@ -433,6 +465,7 @@ async function handleFormSubmit(event) {
   if (submitButton) {
     submitButton.setAttribute('aria-busy', 'true');
     submitButton.disabled = true;
+    setAriaAttributes(submitButton, { 'aria-label': 'Submitting form, please wait' });
   }
 
   try {
@@ -473,6 +506,7 @@ async function handleFormSubmit(event) {
     if (submitButton) {
       submitButton.setAttribute('aria-busy', 'false');
       submitButton.disabled = false;
+      setAriaAttributes(submitButton, { 'aria-label': 'Submit form' });
     }
   }
 }
@@ -510,9 +544,84 @@ function handleSmoothScroll(event) {
   targetElement.setAttribute('tabindex', '-1');
   targetElement.focus();
 
+  // Announce navigation to screen readers
+  const targetName = targetElement.getAttribute('aria-label') || targetId;
+  announce(`Navigated to ${targetName}`, { politeness: 'polite' });
+
   // Update URL without triggering navigation
   if (window.history && window.history.pushState) {
     window.history.pushState(null, '', href);
+  }
+}
+
+// ============================================
+// Accessibility Initialization
+// ============================================
+
+/**
+ * Initialize accessibility features
+ */
+function initializeAccessibility() {
+  try {
+    console.log('[AgroLanding] Initializing accessibility features...');
+
+    // Initialize skip links
+    initializeSkipLinks({
+      mainContentId: 'main',
+      additionalLinks: [
+        { text: 'Skip to navigation', target: '#navigation' },
+        { text: 'Skip to contact form', target: '#contact-form' },
+      ],
+    });
+
+    // Add ARIA labels to main sections
+    const sections = [
+      { id: 'home', label: 'Home section' },
+      { id: 'services', label: 'Services section' },
+      { id: 'about', label: 'About section' },
+      { id: 'contact', label: 'Contact section' },
+    ];
+
+    sections.forEach(({ id, label }) => {
+      const section = document.getElementById(id);
+      if (section) {
+        setAriaAttributes(section, { 'aria-label': label });
+      }
+    });
+
+    // Enhance form accessibility
+    const form = domElements.contactForm;
+    if (form) {
+      setAriaAttributes(form, {
+        'aria-label': 'Contact form',
+        'role': 'form',
+      });
+
+      // Add required indicators to labels
+      const requiredFields = form.querySelectorAll('[required]');
+      requiredFields.forEach((field) => {
+        const label = form.querySelector(`label[for="${field.id}"]`);
+        if (label && !label.querySelector('.required')) {
+          const requiredSpan = document.createElement('span');
+          requiredSpan.className = 'required';
+          requiredSpan.setAttribute('aria-label', 'required');
+          requiredSpan.textContent = ' *';
+          label.appendChild(requiredSpan);
+        }
+      });
+    }
+
+    // Announce page load completion
+    setTimeout(() => {
+      announce('Page loaded successfully. Use tab to navigate.', { 
+        politeness: 'polite',
+        delay: 500 
+      });
+    }, 1000);
+
+    console.log('[AgroLanding] Accessibility features initialized successfully');
+  } catch (error) {
+    console.error('[AgroLanding] Failed to initialize accessibility features:', error);
   }
 }
 
@@ -669,6 +778,9 @@ function initializeApp() {
 
     // Initialize contact form
     initContactForm();
+
+    // Initialize accessibility features
+    initializeAccessibility();
 
     // Initialize performance optimization features
     initializeLazyLoading();
