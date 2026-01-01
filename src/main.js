@@ -35,6 +35,12 @@ import './styles/sections/hero.css';
  */
 import './styles/sections/services.css';
 
+/**
+ * Import about section styles for content-focused layout
+ * This includes typography hierarchy, trust indicators, and responsive behavior
+ */
+import './styles/sections/about.css';
+
 // ============================================
 // Component Imports - Module Loading
 // ============================================
@@ -50,6 +56,12 @@ import { initializeHeroSection } from './components/hero.js';
  * This includes service card interactions, grid optimization, and accessibility
  */
 import { initializeServicesSection } from './components/services.js';
+
+/**
+ * Import about section functionality for interactive features
+ * This includes content rendering, statistics animation, and trust indicators
+ */
+import { initializeAboutSection } from './components/about.js';
 
 // ============================================
 // Application State
@@ -537,6 +549,9 @@ function initializeApp() {
 
     // Initialize services section
     initializeServicesSection();
+
+    // Initialize about section
+    initializeAboutSection();
 
     // Mark as initialized
     appState.initialized = true;
