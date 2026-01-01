@@ -1,0 +1,32 @@
+{
+  "name": "agrolanding",
+  "version": "1.0.0",
+  "description": "Modern agricultural business landing page showcasing services, products, and company information",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint ."
+  },
+  "keywords": [
+    "agriculture",
+    "landing-page",
+    "farming",
+    "agribusiness",
+    "agricultural-services"
+  ],
+  "author": "AgroLanding Team",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "vite": "^5.0.0",
+    "eslint": "^9.0.0",
+    "@eslint/js": "^9.0.0",
+    "prettier": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
