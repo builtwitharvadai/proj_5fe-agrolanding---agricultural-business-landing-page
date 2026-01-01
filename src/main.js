@@ -88,6 +88,22 @@ import { initializeAboutSection } from './components/about.js';
 import { initContactForm } from './components/contact-form.js';
 
 // ============================================
+// Performance Optimization Imports
+// ============================================
+
+/**
+ * Import lazy loading utilities for image optimization
+ * This includes Intersection Observer-based lazy loading and progressive enhancement
+ */
+import { initLazyLoading } from './utils/lazy-loading.js';
+
+/**
+ * Import performance monitoring utilities for tracking and optimization
+ * This includes performance metrics, budget validation, and load time tracking
+ */
+import { initPerformanceMonitoring } from './utils/performance.js';
+
+// ============================================
 // Application State
 // ============================================
 
@@ -99,6 +115,8 @@ const appState = {
   initialized: false,
   formSubmitting: false,
   navigationOpen: false,
+  performanceMonitoring: null,
+  lazyLoading: null,
 };
 
 // ============================================
@@ -499,6 +517,75 @@ function handleSmoothScroll(event) {
 }
 
 // ============================================
+// Performance Optimization Initialization
+// ============================================
+
+/**
+ * Initialize lazy loading for images
+ */
+function initializeLazyLoading() {
+  try {
+    console.log('[AgroLanding] Initializing lazy loading...');
+
+    const lazyLoadInstance = initLazyLoading('[data-src]', {
+      rootMargin: '50px',
+      threshold: 0.01,
+      enablePerformanceMonitoring: true,
+      retryAttempts: 3,
+      retryDelay: 1000,
+    });
+
+    if (lazyLoadInstance) {
+      appState.lazyLoading = lazyLoadInstance;
+      console.log('[AgroLanding] Lazy loading initialized successfully');
+    } else {
+      console.warn('[AgroLanding] Lazy loading initialization returned null');
+    }
+  } catch (error) {
+    console.error('[AgroLanding] Failed to initialize lazy loading:', error);
+  }
+}
+
+/**
+ * Initialize performance monitoring
+ */
+function initializePerformanceMonitoring() {
+  try {
+    console.log('[AgroLanding] Initializing performance monitoring...');
+
+    const performanceInstance = initPerformanceMonitoring({
+      observeLCP: true,
+      observeFID: true,
+      observeCLS: true,
+      autoReport: false,
+      reportInterval: 30000,
+    });
+
+    if (performanceInstance) {
+      appState.performanceMonitoring = performanceInstance;
+      console.log('[AgroLanding] Performance monitoring initialized successfully');
+
+      // Log initial performance report after page load
+      if (document.readyState === 'complete') {
+        setTimeout(() => {
+          performanceInstance.logReport();
+        }, 2000);
+      } else {
+        window.addEventListener('load', () => {
+          setTimeout(() => {
+            performanceInstance.logReport();
+          }, 2000);
+        });
+      }
+    } else {
+      console.warn('[AgroLanding] Performance monitoring initialization returned null');
+    }
+  } catch (error) {
+    console.error('[AgroLanding] Failed to initialize performance monitoring:', error);
+  }
+}
+
+// ============================================
 // Initialization
 // ============================================
 
@@ -582,6 +669,10 @@ function initializeApp() {
 
     // Initialize contact form
     initContactForm();
+
+    // Initialize performance optimization features
+    initializeLazyLoading();
+    initializePerformanceMonitoring();
 
     // Mark as initialized
     appState.initialized = true;
