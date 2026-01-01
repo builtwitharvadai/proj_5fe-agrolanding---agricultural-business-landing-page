@@ -25,6 +25,14 @@ export default defineConfig({
       compress: {
         drop_console: false,
         drop_debugger: true,
+        passes: 2,
+        pure_funcs: ['console.log'],
+      },
+      mangle: {
+        safari10: true,
+      },
+      format: {
+        comments: false,
       },
     },
     
@@ -32,8 +40,24 @@ export default defineConfig({
     rollupOptions: {
       output: {
         // Manual chunk splitting for optimal caching
-        manualChunks: {
-          vendor: ['vite'],
+        manualChunks: (id) => {
+          // Vendor chunks
+          if (id.includes('node_modules')) {
+            if (id.includes('vite')) {
+              return 'vite-vendor';
+            }
+            return 'vendor';
+          }
+          
+          // Utility chunks
+          if (id.includes('src/utils')) {
+            return 'utils';
+          }
+          
+          // Component chunks
+          if (id.includes('src/components')) {
+            return 'components';
+          }
         },
         
         // Asset naming patterns
@@ -68,6 +92,12 @@ export default defineConfig({
     
     // Emit manifest for asset tracking
     manifest: true,
+    
+    // Asset inlining threshold (4kb)
+    assetsInlineLimit: 4096,
+    
+    // Enable CSS minification
+    cssMinify: true,
   },
 
   // Development server configuration
