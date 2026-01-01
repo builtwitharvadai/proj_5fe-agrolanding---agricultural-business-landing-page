@@ -23,6 +23,22 @@ import './styles/main.css';
  */
 import './styles/components.css';
 
+/**
+ * Import hero section styles for full-viewport hero design
+ * This includes hero layout, typography, CTA buttons, and responsive behavior
+ */
+import './styles/sections/hero.css';
+
+// ============================================
+// Component Imports - Module Loading
+// ============================================
+
+/**
+ * Import hero section functionality for interactive features
+ * This includes CTA button handling, smooth scrolling, and image optimization
+ */
+import { initializeHeroSection } from './components/hero.js';
+
 // ============================================
 // Application State
 // ============================================
@@ -503,6 +519,9 @@ function initializeApp() {
     // Initialize event listeners
     initializeFormListeners();
     initializeNavigationListeners();
+
+    // Initialize hero section
+    initializeHeroSection();
 
     // Mark as initialized
     appState.initialized = true;
