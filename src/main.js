@@ -24,6 +24,12 @@ import './styles/main.css';
 import './styles/components.css';
 
 /**
+ * Import navigation component styles for responsive navigation
+ * This includes mobile menu, hamburger button, and navigation interactions
+ */
+import './styles/components/navigation.css';
+
+/**
  * Import hero section styles for full-viewport hero design
  * This includes hero layout, typography, CTA buttons, and responsive behavior
  */
@@ -50,6 +56,12 @@ import './styles/sections/contact.css';
 // ============================================
 // Component Imports - Module Loading
 // ============================================
+
+/**
+ * Import navigation functionality for mobile menu and smooth scrolling
+ * This includes hamburger menu, section detection, and keyboard navigation
+ */
+import { initNavigation } from './components/navigation.js';
 
 /**
  * Import hero section functionality for interactive features
@@ -551,6 +563,9 @@ function initializeApp() {
 
     // Initialize DOM references
     initializeDOMReferences();
+
+    // Initialize navigation component
+    initNavigation();
 
     // Initialize event listeners
     initializeFormListeners();
