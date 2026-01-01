@@ -41,6 +41,12 @@ import './styles/sections/services.css';
  */
 import './styles/sections/about.css';
 
+/**
+ * Import contact section styles for contact layout and form styling
+ * This includes contact information display, form fields, and responsive behavior
+ */
+import './styles/sections/contact.css';
+
 // ============================================
 // Component Imports - Module Loading
 // ============================================
@@ -62,6 +68,12 @@ import { initializeServicesSection } from './components/services.js';
  * This includes content rendering, statistics animation, and trust indicators
  */
 import { initializeAboutSection } from './components/about.js';
+
+/**
+ * Import contact form functionality for form validation and submission
+ * This includes client-side validation, error handling, and form state management
+ */
+import { initContactForm } from './components/contact-form.js';
 
 // ============================================
 // Application State
@@ -552,6 +564,9 @@ function initializeApp() {
 
     // Initialize about section
     initializeAboutSection();
+
+    // Initialize contact form
+    initContactForm();
 
     // Mark as initialized
     appState.initialized = true;
