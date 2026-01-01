@@ -320,6 +320,83 @@ i {
 }
 
 /* ============================================
+   Performance Optimizations
+   ============================================ */
+
+/* Critical rendering path optimization */
+@layer critical, components, utilities;
+
+/* Font loading optimization */
+@font-face {
+  font-family: system-ui;
+  font-display: swap;
+}
+
+/* CSS containment for performance */
+.service-card,
+.stat-item,
+.contact-item {
+  contain: layout style paint;
+}
+
+/* Content visibility for off-screen content */
+#services,
+#about,
+#contact {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 500px;
+}
+
+/* Optimize animations for performance */
+@media (prefers-reduced-motion: no-preference) {
+  .service-card,
+  .btn,
+  nav a {
+    will-change: transform;
+  }
+
+  .service-card:hover,
+  .btn-primary:hover {
+    transform: translateY(-2px);
+  }
+}
+
+/* Image optimization placeholders */
+img[data-src] {
+  background-color: var(--color-gray-200);
+  background-image: linear-gradient(
+    90deg,
+    var(--color-gray-200) 0%,
+    var(--color-gray-300) 50%,
+    var(--color-gray-200) 100%
+  );
+  background-size: 200% 100%;
+  animation: loading-shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes loading-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+img.lazy-loaded {
+  animation: fade-in var(--transition-base);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ============================================
    Layout Utilities
    ============================================ */
 
