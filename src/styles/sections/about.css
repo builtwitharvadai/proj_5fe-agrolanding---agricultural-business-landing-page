@@ -1,0 +1,424 @@
+/* ============================================
+   About Section Styles
+   Content-focused layout with typography hierarchy
+   ============================================ */
+
+/* ============================================
+   Section Container
+   ============================================ */
+
+#about {
+  padding-block: var(--space-3xl);
+  background-color: var(--color-surface);
+  position: relative;
+  isolation: isolate;
+}
+
+#about::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-50) 0%,
+    var(--color-accent-50) 50%,
+    var(--color-secondary-50) 100%
+  );
+  opacity: 0.3;
+  z-index: -1;
+}
+
+/* ============================================
+   Content Layout
+   ============================================ */
+
+.about-content {
+  display: grid;
+  gap: var(--space-2xl);
+  margin-block-end: var(--space-3xl);
+  align-items: start;
+}
+
+@media (min-width: 768px) {
+  .about-content {
+    gap: var(--space-3xl);
+  }
+}
+
+@media (min-width: 1024px) {
+  .about-content {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: var(--space-3xl);
+  }
+}
+
+/* ============================================
+   Typography Hierarchy
+   ============================================ */
+
+.about-text {
+  container-type: inline-size;
+  container-name: about-text;
+}
+
+.about-text h2 {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary-800);
+  margin-block-end: var(--space-lg);
+  line-height: var(--line-height-tight);
+  text-wrap: balance;
+}
+
+.about-text h3 {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary-700);
+  margin-block-start: var(--space-xl);
+  margin-block-end: var(--space-md);
+  line-height: var(--line-height-tight);
+}
+
+.about-text p {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+  margin-block-end: var(--space-md);
+  text-wrap: pretty;
+}
+
+.about-text p:last-of-type {
+  margin-block-end: 0;
+}
+
+/* ============================================
+   Trust Indicators List
+   ============================================ */
+
+.about-text ul {
+  list-style: none;
+  padding: 0;
+  margin-block-start: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.about-text li {
+  padding-inline-start: var(--space-xl);
+  position: relative;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+}
+
+.about-text li::before {
+  content: '✓';
+  position: absolute;
+  inset-inline-start: 0;
+  color: var(--color-success);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-lg);
+  width: var(--space-lg);
+  height: var(--space-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-accent-50);
+  border-radius: var(--radius-full);
+}
+
+.about-text li strong {
+  color: var(--color-primary-700);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* ============================================
+   About Image
+   ============================================ */
+
+.about-image {
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  position: relative;
+  isolation: isolate;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.about-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-600) 0%,
+    transparent 50%
+  );
+  opacity: 0.1;
+  z-index: 1;
+  transition: opacity var(--transition-base);
+}
+
+.about-image:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-2xl);
+}
+
+.about-image:hover::before {
+  opacity: 0.15;
+}
+
+.about-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  aspect-ratio: 4 / 5;
+}
+
+@media (min-width: 1024px) {
+  .about-image img {
+    aspect-ratio: 3 / 4;
+  }
+}
+
+/* ============================================
+   Statistics Grid
+   ============================================ */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+  gap: var(--space-xl);
+  padding: var(--space-2xl);
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-50) 0%,
+    var(--color-accent-50) 100%
+  );
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.stats-grid::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 20% 50%,
+    var(--color-secondary-100) 0%,
+    transparent 50%
+  );
+  opacity: 0.5;
+  z-index: -1;
+}
+
+@media (min-width: 640px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ============================================
+   Stat Items
+   ============================================ */
+
+.stat-item {
+  text-align: center;
+  padding: var(--space-md);
+  border-radius: var(--radius-lg);
+  background-color: rgba(255, 255, 255, 0.6);
+  transition: all var(--transition-base);
+  position: relative;
+  isolation: isolate;
+}
+
+.stat-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-100) 0%,
+    var(--color-accent-100) 100%
+  );
+  opacity: 0;
+  border-radius: var(--radius-lg);
+  transition: opacity var(--transition-base);
+  z-index: -1;
+}
+
+.stat-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.stat-item:hover::before {
+  opacity: 1;
+}
+
+.stat-number {
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary-700);
+  line-height: 1;
+  margin-block-end: var(--space-sm);
+  font-family: var(--font-family-heading);
+  display: block;
+}
+
+.stat-label {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+  display: block;
+}
+
+/* ============================================
+   Container Query Adjustments
+   ============================================ */
+
+@container about-text (width > 500px) {
+  .about-text h2 {
+    font-size: var(--font-size-5xl);
+  }
+
+  .about-text h3 {
+    font-size: var(--font-size-3xl);
+  }
+
+  .about-text p {
+    font-size: var(--font-size-lg);
+  }
+
+  .about-text li {
+    font-size: var(--font-size-lg);
+  }
+}
+
+/* ============================================
+   Accessibility Enhancements
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .about-image,
+  .stat-item {
+    transition: none;
+  }
+
+  .about-image:hover,
+  .stat-item:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  #about::before {
+    opacity: 0.1;
+  }
+
+  .about-text li::before {
+    background-color: var(--color-success);
+    color: white;
+  }
+
+  .stats-grid {
+    border: 2px solid var(--color-primary-600);
+  }
+
+  .stat-item {
+    border: 1px solid var(--color-border);
+  }
+}
+
+/* ============================================
+   Print Styles
+   ============================================ */
+
+@media print {
+  #about {
+    padding-block: var(--space-xl);
+    background-color: transparent;
+  }
+
+  #about::before {
+    display: none;
+  }
+
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .about-image {
+    max-width: 400px;
+    margin-inline: auto;
+    box-shadow: none;
+    border: 1px solid black;
+  }
+
+  .stats-grid {
+    background: transparent;
+    border: 1px solid black;
+    box-shadow: none;
+  }
+
+  .stat-item {
+    background-color: transparent;
+    break-inside: avoid;
+  }
+
+  .stat-item::before {
+    display: none;
+  }
+}
+
+/* ============================================
+   Dark Mode Support
+   ============================================ */
+
+@media (prefers-color-scheme: dark) {
+  #about::before {
+    opacity: 0.2;
+  }
+
+  .about-text h2 {
+    color: var(--color-primary-200);
+  }
+
+  .about-text h3 {
+    color: var(--color-primary-300);
+  }
+
+  .about-text li::before {
+    background-color: var(--color-accent-800);
+  }
+
+  .stats-grid {
+    background: linear-gradient(
+      135deg,
+      var(--color-primary-900) 0%,
+      var(--color-accent-900) 100%
+    );
+  }
+
+  .stat-item {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+
+  .stat-number {
+    color: var(--color-primary-300);
+  }
+}
