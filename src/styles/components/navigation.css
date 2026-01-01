@@ -1,0 +1,486 @@
+/* ============================================
+   AgroLanding - Navigation Component Styles
+   Production-ready responsive navigation
+   ============================================ */
+
+/* ============================================
+   Navigation Container
+   ============================================ */
+
+.nav-container {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-index-sticky);
+  background-color: var(--color-background);
+  border-block-end: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition-base);
+}
+
+.nav-container.scrolled {
+  box-shadow: var(--shadow-md);
+}
+
+/* ============================================
+   Navigation Layout
+   ============================================ */
+
+.nav-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 64px;
+  padding-block: var(--space-sm);
+  position: relative;
+}
+
+/* ============================================
+   Brand/Logo Section
+   ============================================ */
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  text-decoration: none;
+  z-index: calc(var(--z-index-sticky) + 2);
+}
+
+.nav-brand:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.logo-text {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary-600);
+  transition: color var(--transition-fast);
+}
+
+.nav-brand:hover .logo-text {
+  color: var(--color-primary-700);
+}
+
+/* ============================================
+   Hamburger Menu Button (Mobile)
+   ============================================ */
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  padding: var(--space-sm);
+  background: transparent;
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  z-index: calc(var(--z-index-sticky) + 2);
+  transition: background-color var(--transition-fast);
+}
+
+.nav-toggle:hover {
+  background-color: var(--color-primary-50);
+}
+
+.nav-toggle:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+  border-color: var(--color-primary-500);
+}
+
+.nav-toggle[aria-expanded='true'] {
+  background-color: var(--color-primary-50);
+}
+
+.hamburger {
+  position: relative;
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-primary-600);
+  transition: background-color var(--transition-base), transform var(--transition-base);
+  border-radius: 2px;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-primary-600);
+  transition: transform var(--transition-base), top var(--transition-base),
+    bottom var(--transition-base);
+  border-radius: 2px;
+}
+
+.hamburger::before {
+  top: -8px;
+}
+
+.hamburger::after {
+  bottom: -8px;
+}
+
+.nav-toggle[aria-expanded='true'] .hamburger {
+  background-color: transparent;
+}
+
+.nav-toggle[aria-expanded='true'] .hamburger::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.nav-toggle[aria-expanded='true'] .hamburger::after {
+  bottom: 0;
+  transform: rotate(-45deg);
+}
+
+/* ============================================
+   Navigation Menu
+   ============================================ */
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.nav-list {
+  display: flex;
+  gap: var(--space-md);
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  margin: 0;
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-sm) var(--space-md);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  min-height: 44px;
+  min-width: 44px;
+  transition: color var(--transition-fast), background-color var(--transition-fast),
+    transform var(--transition-fast);
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-primary-600);
+  transition: width var(--transition-base), left var(--transition-base);
+}
+
+.nav-link:hover {
+  color: var(--color-primary-600);
+  background-color: var(--color-primary-50);
+}
+
+.nav-link:hover::after {
+  width: calc(100% - var(--space-md) * 2);
+  left: var(--space-md);
+}
+
+.nav-link:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+}
+
+.nav-link:active {
+  transform: scale(0.98);
+}
+
+.nav-link[aria-current='page'] {
+  color: var(--color-primary-600);
+  font-weight: var(--font-weight-semibold);
+  background-color: var(--color-primary-50);
+}
+
+.nav-link[aria-current='page']::after {
+  width: calc(100% - var(--space-md) * 2);
+  left: var(--space-md);
+}
+
+/* ============================================
+   Mobile Navigation Styles
+   ============================================ */
+
+@media (max-width: 767px) {
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: var(--space-lg);
+    background-color: var(--color-background);
+    box-shadow: var(--shadow-xl);
+    transform: translateX(100%);
+    transition: transform var(--transition-base);
+    overflow-y: auto;
+    z-index: calc(var(--z-index-sticky) + 1);
+  }
+
+  .nav-menu[data-visible='true'] {
+    transform: translateX(0);
+  }
+
+  .nav-list {
+    flex-direction: column;
+    gap: var(--space-sm);
+    width: 100%;
+  }
+
+  .nav-item {
+    width: 100%;
+  }
+
+  .nav-link {
+    width: 100%;
+    justify-content: flex-start;
+    padding: var(--space-md) var(--space-lg);
+    font-size: var(--font-size-lg);
+  }
+
+  .nav-link::after {
+    display: none;
+  }
+
+  .nav-link:hover {
+    transform: translateX(4px);
+  }
+
+  .nav-link:active {
+    transform: translateX(2px) scale(0.98);
+  }
+}
+
+/* ============================================
+   Tablet Navigation Adjustments
+   ============================================ */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .nav-list {
+    gap: var(--space-sm);
+  }
+
+  .nav-link {
+    padding: var(--space-sm);
+    font-size: var(--font-size-sm);
+  }
+}
+
+/* ============================================
+   Desktop Navigation Enhancements
+   ============================================ */
+
+@media (min-width: 1024px) {
+  .nav-wrapper {
+    min-height: 72px;
+  }
+
+  .nav-list {
+    gap: var(--space-lg);
+  }
+
+  .nav-link {
+    padding: var(--space-md) var(--space-lg);
+  }
+}
+
+/* ============================================
+   Navigation Overlay (Mobile)
+   ============================================ */
+
+.nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: var(--z-index-sticky);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+@media (max-width: 767px) {
+  .nav-overlay[data-visible='true'] {
+    display: block;
+    opacity: 1;
+  }
+}
+
+/* ============================================
+   Smooth Scroll Behavior
+   ============================================ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .nav-menu,
+  .nav-link,
+  .nav-toggle .hamburger,
+  .nav-toggle .hamburger::before,
+  .nav-toggle .hamburger::after,
+  .nav-link::after {
+    transition: none;
+  }
+}
+
+/* ============================================
+   High Contrast Mode Support
+   ============================================ */
+
+@media (prefers-contrast: high) {
+  .nav-container {
+    border-block-end-width: 2px;
+  }
+
+  .nav-link {
+    border: 1px solid transparent;
+  }
+
+  .nav-link:hover,
+  .nav-link[aria-current='page'] {
+    border-color: currentColor;
+  }
+
+  .nav-toggle {
+    border-width: 2px;
+  }
+}
+
+/* ============================================
+   Print Styles
+   ============================================ */
+
+@media print {
+  .nav-toggle,
+  .nav-overlay {
+    display: none !important;
+  }
+
+  .nav-container {
+    position: static;
+    box-shadow: none;
+    border-block-end: 1px solid black;
+  }
+
+  .nav-menu {
+    position: static;
+    transform: none;
+  }
+
+  .nav-list {
+    flex-direction: row;
+    gap: var(--space-md);
+  }
+
+  .nav-link {
+    padding: var(--space-xs) var(--space-sm);
+    color: black;
+  }
+
+  .nav-link::after {
+    display: none;
+  }
+}
+
+/* ============================================
+   Dark Mode Support
+   ============================================ */
+
+@media (prefers-color-scheme: dark) {
+  .nav-container {
+    background-color: var(--color-background);
+    border-block-end-color: var(--color-border);
+  }
+
+  .nav-toggle:hover,
+  .nav-toggle[aria-expanded='true'] {
+    background-color: rgba(95, 145, 22, 0.1);
+  }
+
+  .nav-link:hover,
+  .nav-link[aria-current='page'] {
+    background-color: rgba(95, 145, 22, 0.1);
+  }
+
+  @media (max-width: 767px) {
+    .nav-menu {
+      background-color: var(--color-background);
+    }
+  }
+}
+
+/* ============================================
+   Focus Within Enhancement
+   ============================================ */
+
+.nav-menu:focus-within {
+  outline: none;
+}
+
+/* ============================================
+   Active Section Highlighting
+   ============================================ */
+
+.nav-link.active {
+  color: var(--color-primary-600);
+  font-weight: var(--font-weight-semibold);
+  background-color: var(--color-primary-50);
+}
+
+.nav-link.active::after {
+  width: calc(100% - var(--space-md) * 2);
+  left: var(--space-md);
+}
+
+/* ============================================
+   Touch-Friendly Enhancements
+   ============================================ */
+
+@media (hover: none) and (pointer: coarse) {
+  .nav-link {
+    min-height: 48px;
+    min-width: 48px;
+  }
+
+  .nav-toggle {
+    width: 48px;
+    height: 48px;
+  }
+}
